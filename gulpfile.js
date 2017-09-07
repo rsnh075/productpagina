@@ -53,11 +53,15 @@ var bs = require('browser-sync').create(config.projectName);
 
 // Start browserSync server
 gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-      baseDir: 'app'
-    }
-  })
+  if (config.bs == true ) {
+    bs.init({
+      server: {
+        baseDir: 'app'
+      }
+    });
+  } else {
+      console.log('Browser Sync Disabled');
+  }
 })
 
 gulp.task('sass', function() {
