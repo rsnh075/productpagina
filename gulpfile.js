@@ -12,7 +12,9 @@ var config = {
         scss : 'app/scss/**/*.scss',
         css : 'app/css',
         js : 'app/js/**/*.js',
-        html : 'app/*.html'
+        html : 'app/*.html',
+        tpl : 'app/templates/*',
+        partials : 'app/templates/**/*.mustache'
     },
     distPath: {
     root : 'dist/',
@@ -31,7 +33,8 @@ var gulp = require ('gulp'),
   gulpIf = require('gulp-if'),
   cache = require('gulp-cache'),
   del = require('del'),
-  runSequence = require('run-sequence');
+  runSequence = require('run-sequence'),
+  mustache = require('gulp-mustache');
 
 // Styles
 var sass = require ('gulp-sass'),
@@ -75,9 +78,16 @@ gulp.task('sass', function() {
     .pipe( bs.reload({stream: true}) );
 })
 
+gulp.task('mustache', function() {
+    gulp.src(config.appPath.tpl)
+      .pipe( mustache('app/data.json',{},{}))
+      .pipe( gulp.dest(config.appPath.root) );
+});
+
 // Watchers
 gulp.task('watch', function() {
   gulp.watch(config.appPath.scss, ['sass']);
+  gulp.watch(config.appPath.tpl, ['mustache']);
   gulp.watch(config.appPath.html, bs.reload);
   gulp.watch(config.appPath.js, bs.reload);
 })

@@ -1,0 +1,35 @@
+{ "products" : [
+	{
+		"sku" : "1",
+		"image" : "img_test",
+		"name" : "Product for Experius",
+		"categories" : "collection",
+		"description" : "Your favorite soft plush jersey fabric is now available in a drawstring short that's perfect for lounging. Wear it on those stay-home-and-stream-movies-all-day kinds of days.",
+		"rating" : "5",
+		"old_price" : "159",
+		"price" : "139",
+		"discount" : "20"
+	},
+	{
+		"sku" : "2",
+		"image" : "img_test",
+		"name" : "Product for Experius",
+		"category" : "collection",
+		"description" : "Your favorite soft plush jersey fabric is now available in a drawstring short that's perfect for lounging. Wear it on those stay-home-and-stream-movies-all-day kinds of days.",
+		"rating" : "5",
+		"old_price" : "159",
+		"price" : "139",
+		"discount" : "20"
+	},
+	{
+		"sku" : "3",
+		"image" : "img_test",
+		"name" : "Product for Experius",
+		"category" : "collection",
+		"description" : "Your favorite soft plush jersey fabric is now available in a drawstring short that's perfect for lounging. Wear it on those stay-home-and-stream-movies-all-day kinds of days.",
+		"rating" : "5",
+		"old_price" : "159",
+		"price" : "139",
+		"discount" : "20"
+	}]
+}
