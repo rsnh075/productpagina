@@ -2,16 +2,32 @@
 
 <body>
 
-    <div class="wrap">
+<header>
+	<div class="content">
+		...
+	</div>
+</header>
 
-    	{{> partials/products }}
+<main>
 
-        <div class="content">
-            ...
-        </div>
-    </div>
+	<section id="products">
 
-    {{> partials/footer }}
+	    <div class="products_wrap">
+
+	    	{{> partials/products }}
+
+	    </div>
+
+	</section>
+
+</main>
+
+<footer>
+	<div class="content">
+		...
+	</div>
+	{{> partials/footer }}
+</footer>
 
 </body>
 </html>

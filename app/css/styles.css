@@ -1,5 +1,44 @@
-.testing {
-  width: 71.42857%; }
-
+/*
+  ** Mixins
+*/
+/*
+  ** Layout
+*/
 body {
-  background-color: green; }
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: red; }
+
+header, footer {
+  height: 100px;
+  background-color: black; }
+
+/*
+  ** Products
+*/
+.products_wrap {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 20px 0 0 0; }
+
+#products {
+  background-color: yellow; }
+  #products .product {
+    width: 22.09567%;
+    float: left;
+    margin-right: 3.87244%;
+    margin-bottom: 20px;
+    padding: 0 0 10px;
+    background-color: blue;
+    vertical-align: top; }
+    #products .product:nth-of-type(4n+0) {
+      float: right;
+      margin-right: 0; }
+    #products .product img {
+      display: block;
+      max-width: 100%;
+      padding: 0 0 5px 0; }
+    #products .product > :not(img) {
+      padding: 0 5px; }

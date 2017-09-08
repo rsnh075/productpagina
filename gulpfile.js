@@ -87,7 +87,7 @@ gulp.task('mustache', function() {
 // Watchers
 gulp.task('watch', function() {
   gulp.watch(config.appPath.scss, ['sass']);
-  gulp.watch(config.appPath.tpl, ['mustache']);
+  gulp.watch(config.appPath.partials, ['mustache']);
   gulp.watch(config.appPath.html, bs.reload);
   gulp.watch(config.appPath.js, bs.reload);
 })
@@ -138,7 +138,7 @@ gulp.task('clean:dist', function() {
 // ---------------------------------------------------------------------------- 
 
 gulp.task('default', function(callback) {
-  runSequence(['sass', 'browserSync'], 'watch',
+  runSequence(['sass', 'mustache', 'browserSync'], 'watch',
     callback
   )
 })
