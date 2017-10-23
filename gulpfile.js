@@ -81,13 +81,14 @@ gulp.task('sass', function() {
 gulp.task('mustache', function() {
     gulp.src(config.appPath.tpl)
       .pipe( mustache('app/data.json',{},{}))
-      .pipe( gulp.dest(config.appPath.root) );
+      .pipe( gulp.dest(config.appPath.root) )
+      .pipe( bs.reload({stream: true}) );
 });
 
 // Watchers
 gulp.task('watch', function() {
   gulp.watch(config.appPath.scss, ['sass']);
-  gulp.watch(config.appPath.partials, ['mustache']);
+  gulp.watch([config.appPath.tpl, config.appPath.partials], ['mustache']);
   gulp.watch(config.appPath.html, bs.reload);
   gulp.watch(config.appPath.js, bs.reload);
 })
@@ -110,9 +111,12 @@ gulp.task('useref', function() {
 gulp.task('images', function() {
   return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
     // Caching images that ran through imagemin
-    .pipe( cache(imagemin({
-      interlaced: true,
-    })) )
+    .pipe( cache(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.svgo({plugins: [{removeViewBox: true}, {cleanupIDs: true}]})
+    ])) )
     .pipe( gulp.dest('dist/images') )
 });
 

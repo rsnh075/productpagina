@@ -1,5 +1,5 @@
 {{#products}}
-	<div class="product">
+	<div class="product" name="product{{sku}}" onmouseover="effectOn('product{{sku}}')" onmouseout="effectOff('product{{sku}}')">
 		<img src="images/{{image}}.jpg" alt="Photo of {{name}}">
 		<h3>{{name}}</h3>
 		<h4>{{categories}}</h4>

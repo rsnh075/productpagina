@@ -9,12 +9,32 @@
     }
 
     @if $media-query == tablet {
-        @media only screen and (min-width:768) and (max-width:1099px) { @content; }
+        @media only screen and (min-width:768px) and (max-width:1099px) { @content; }
     }
 
     @if $media-query == desktop {
         @media only screen and (min-width:1100px) { @content; }
     }
+}
+
+/*
+  ** Animation
+*/
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 /*
@@ -24,12 +44,28 @@
 body {
 	max-width: 1100px;
 	margin: 0 auto;
-	background-color: red;
+	background-color: beige;
+	font-family: 'Open Sans', sans-serif;
 }
 
 header, footer {
 	height: 100px;
-	background-color: black;
+	background-color: beige;
+}
+
+/*
+  ** General
+*/
+
+selected {
+	color: rgba(red, 0.5);
+}
+
+.selected {
+	padding: 10px;
+	outline: 1px solid rgba(red, 0.5);
+	animation-name: bounce;
+    animation-duration: 1s;
 }
 
 /*
@@ -43,20 +79,56 @@ header, footer {
 }
 
 #products {
-	background-color: yellow;
+	background-color: beige;
 	.product {
-		width: 22.09567%;
 		float: left;
-		margin-right: 3.87244%;
 		margin-bottom: 20px;
 		padding: 0 0 10px;
-		background-color: blue;
+		background-color: white;
+		box-shadow: 0px 0px 10px grey;
 		vertical-align: top;
-		&:nth-of-type(4n+0) {
-			float: right;
-			margin-right: 0;
-		}
+		&:hover { box-shadow: 0px 0px 5px grey;  }
 		img { display: block; max-width: 100%; padding: 0 0 5px 0; }
-		& > :not(img) { padding: 0 5px; }
+		& > :not(img) { padding: 0 10px; }
+	}
+}
+
+@include media-query(mobile) {
+	#products {
+		.product {
+			width: 48%;
+			margin-right: 4%;
+			&:nth-of-type(2n+0) {
+				float: right;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@include media-query(tablet) {
+	#products {
+		.product {
+			width: 31.63418%;
+			margin-right: 2.54873%;
+			&:nth-of-type(3n+0) {
+				float: right;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@include media-query(desktop) {
+	#products {
+		.product {
+			margin-bottom: 30px;
+			width: 22.09567%;
+			margin-right: 3.87244%;
+			&:nth-of-type(4n+0) {
+				float: right;
+				margin-right: 0;
+			}
+		}
 	}
 }
